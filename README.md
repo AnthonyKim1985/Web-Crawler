@@ -1,5 +1,5 @@
 # Web-Crawler
-Web Crawler With SSL Certification
+Web Crawler Based on SSL Certification
 
 1. Crawler for Naver Blog
 2. Support SSL Certification (https protocol)
