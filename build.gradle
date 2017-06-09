@@ -1,0 +1,29 @@
+group 'com.anthonykim'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'com.anthonykim.crawler.CrawlerDriver'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version '1.0-SNAPSHOT'
+
+jar {
+    manifest {
+        attributes 'Title': 'Web Crawler', 'Version': version, 'Main-Class': mainClassName
+    }
+    archiveName 'web-crawler.jar'
+    dependsOn configurations.runtime
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.10.2'
+}
