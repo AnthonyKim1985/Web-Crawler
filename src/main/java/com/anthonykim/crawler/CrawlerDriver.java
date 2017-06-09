@@ -17,7 +17,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 /**
- * Created by hyuk0 on 2017-06-09.
+ * Created by Anthony Jinhyuk Kim on 2017-06-09.
  */
 
 public class CrawlerDriver {
@@ -56,14 +56,14 @@ public class CrawlerDriver {
         final String BASE_URL = "https://search.naver.com/search.naver?where=post&sm=tab_jum&ie=utf8&query=";
 
         try (Scanner scanner = new Scanner(System.in)) {
-            logger.info("크롤링 할 키워드를 입력하고 엔터키를 눌러 주세요.");
+            logger.info("Enter the keyword below to crawling.");
             final String keyword = scanner.nextLine();
 
             Document document = Jsoup.connect(String.format("%s%s", BASE_URL, keyword)).get();
             Elements elements = document.select("a.sh_blog_title._sp_each_url._sp_each_title");
 
             for (Element element : elements)
-                System.out.println(String.format("블로그 타이틀: %s", element.attr("title")));
+                System.out.println(String.format("Blog Title: %s", element.attr("title")));
         }
     }
 }
